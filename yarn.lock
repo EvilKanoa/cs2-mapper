@@ -1412,7 +1412,7 @@ debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
   dependencies:
     ms "2.1.2"
 
-deck.gl@^8.9.32:
+deck.gl@8.9.32:
   version "8.9.32"
   resolved "https://registry.yarnpkg.com/deck.gl/-/deck.gl-8.9.32.tgz#bb9b6f99b987a542678693ee60c7424ba08943fe"
   integrity sha512-3CL4oVbo5N1SXuSdFMqA2H2nT4KSzeYRqjuk0Wi6+POA+Yr6oaEHR7v/JaAz/7Vk4UQSpMLaPbApsEctmNUFUA==
