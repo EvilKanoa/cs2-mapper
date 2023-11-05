@@ -1,15 +1,22 @@
 import { AddressSearch } from '../address-search/address-search';
-import { ScaleControl } from '../scale-control/scale-control';
+import { ExportButton } from '../export-button/export-button';
+import type { Polygon, Feature } from '@turf/turf';
 import './topbar.css';
 
-export const Topbar = () => {
+export const Topbar = ({
+	setViewState,
+	boundingPoly,
+}: {
+	setViewState: (viewState: any) => void;
+	boundingPoly: Feature<Polygon>;
+}) => {
 	return (
 		<div className="topbar">
-			<AddressSearch />
+			<AddressSearch setViewState={setViewState} />
 			<span>
 				<h1>CS2 Mapper</h1>
 			</span>
-			<ScaleControl />
+			<ExportButton boundingPoly={boundingPoly} />
 		</div>
 	);
 };

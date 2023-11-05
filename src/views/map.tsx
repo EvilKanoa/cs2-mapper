@@ -16,11 +16,14 @@ const INITIAL_VIEW_STATE = {
 export const MapView = memo(() => {
 	const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
 	const osmTileLayer = useOSMTileLayer();
-	const mapGridLayer = useMapGridLayer(viewState.latitude, viewState.longitude);
+	const [mapGridLayer, boundingPoly] = useMapGridLayer(
+		viewState.latitude,
+		viewState.longitude,
+	);
 
 	return (
 		<>
-			<Topbar />
+			<Topbar setViewState={setViewState} boundingPoly={boundingPoly} />
 			<DeckGL
 				viewState={viewState}
 				onViewStateChange={useCallback(

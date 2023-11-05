@@ -7,8 +7,12 @@ import * as turf from '@turf/turf';
 const TILE_LENGTH_KM = 0.62328571428;
 const TILE_COUNT = 21;
 
-export const useMapGridLayer = (lat: number, lng: number, scale = 1) => {
-	const data = useMemo(() => {
+export const useMapGridLayer = (
+	lat: number,
+	lng: number,
+	scale = 1,
+): [GeoJsonLayer, turf.Feature<turf.Polygon>] => {
+	const boundingPoly = useMemo(() => {
 		const minPoint = turf.destination(
 			turf.destination([lng, lat], (TILE_LENGTH_KM * TILE_COUNT) / 2, 180, {
 				units: 'kilometers',
@@ -33,14 +37,14 @@ export const useMapGridLayer = (lat: number, lng: number, scale = 1) => {
 			maxPoint.geometry.coordinates[1],
 		]);
 
-		return turf.featureCollection([poly]);
+		return poly;
 	}, [lat, lng, scale]);
 
 	const layer = useMemo(
 		() =>
 			new GeoJsonLayer({
 				id: 'map-grid-layer',
-				data,
+				data: turf.featureCollection([boundingPoly]),
 				pickable: false,
 				stroked: true,
 				filled: true,
@@ -50,8 +54,8 @@ export const useMapGridLayer = (lat: number, lng: number, scale = 1) => {
 				getLineColor: [0, 255, 0, 255],
 				getLineWidth: 1,
 			}),
-		[data],
+		[boundingPoly],
 	);
 
-	return layer;
+	return [layer, boundingPoly];
 };
