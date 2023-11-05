@@ -1,0 +1,7 @@
+**/dist
+**/node_modules
+**/__snapshots__
+**/coverage
+**/*.md
+**/coverage
+**/.nyc_output
