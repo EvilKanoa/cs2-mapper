@@ -11,6 +11,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@turf/turf": "6.5.0",
 		"deck.gl": "8.9.32",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
@@ -24,7 +25,7 @@
 		"eslint": "8.45.0",
 		"eslint-plugin-react-hooks": "4.6.0",
 		"eslint-plugin-react-refresh": "0.4.3",
-		"prettier": "^3.0.3",
+		"prettier": "3.0.3",
 		"typescript": "5.0.2",
 		"vite": "4.4.5"
 	},
